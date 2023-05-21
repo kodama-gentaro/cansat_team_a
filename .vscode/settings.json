@@ -1,0 +1,22 @@
+{
+    // Loaded Stubs:  rp2-micropython-1.15.0 
+    
+    "python.languageServer": "Pylance",
+    "python.analysis.autoSearchPath": true,
+    "python.autoComplete.extraPaths": [".micropy\\micropy-cli\\frozen", ".micropy\\BradenM-micropy-stubs-4f5a52a\\frozen", ".micropy\\micropy-cli", ".micropy\\cansat_team_a"],
+    "python.analysis.diagnosticSeverityOverrides": { "reportMissingModuleSource": "none" },
+    "python.analysis.typeCheckingMode": "basic",
+    "python.autoComplete.typeshedPaths":  [".micropy\\micropy-cli\\frozen", ".micropy\\BradenM-micropy-stubs-4f5a52a\\frozen", ".micropy\\micropy-cli", ".micropy\\cansat_team_a", "typings"],
+    "python.analysis.typeshedPaths":  [".micropy\\micropy-cli\\frozen", ".micropy\\BradenM-micropy-stubs-4f5a52a\\frozen", ".micropy\\micropy-cli", ".micropy\\cansat_team_a", "typings"],
+    
+    
+
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.analysis.extraPaths": [
+        ".micropy\\micropy-cli\\frozen",
+        ".micropy\\BradenM-micropy-stubs-4f5a52a\\frozen",
+        ".micropy\\micropy-cli",
+        ".micropy\\cansat_team_a"
+    ]
+}

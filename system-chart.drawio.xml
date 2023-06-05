@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-06-05T04:18:21.866Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0" etag="25iS7LMGvQGsOvcJbUoG" version="21.3.6" type="github">
+<mxfile host="app.diagrams.net" modified="2023-06-05T04:37:02.864Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0" etag="a_iRFt0tYOdukrryaVql" version="21.3.6" type="github">
   <diagram name="Page-1" id="c7558073-3199-34d8-9f00-42111426c3f3">
-    <mxGraphModel dx="1437" dy="358" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="826" pageHeight="1169" background="none" math="0" shadow="0">
+    <mxGraphModel dx="1516" dy="405" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="826" pageHeight="1169" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -65,14 +65,34 @@
             <mxPoint x="580" y="390" as="targetPoint" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="2uSTLxT4_c2NakCa3-PR-121" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.197;entryY=-0.02;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=classic;startFill=1;strokeColor=#990000;strokeWidth=2;" edge="1" parent="1" source="2uSTLxT4_c2NakCa3-PR-115" target="5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="2uSTLxT4_c2NakCa3-PR-115" value="&lt;b&gt;9Axis Sensor&lt;br&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=3;fillColor=#d5e8d4;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="220" y="230" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2uSTLxT4_c2NakCa3-PR-123" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;startArrow=classic;startFill=1;strokeColor=#990000;strokeWidth=2;" edge="1" parent="1" source="2uSTLxT4_c2NakCa3-PR-116">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="509.9230769230769" y="390" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="2uSTLxT4_c2NakCa3-PR-116" value="&lt;b&gt;GNSS&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=3;fillColor=#d5e8d4;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="450" y="230" width="120" height="60" as="geometry" />
         </mxCell>
+        <mxCell id="2uSTLxT4_c2NakCa3-PR-124" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;startArrow=classic;startFill=1;strokeColor=#990000;edgeStyle=orthogonalEdgeStyle;strokeWidth=2;" edge="1" parent="1" source="2uSTLxT4_c2NakCa3-PR-117" target="5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="2uSTLxT4_c2NakCa3-PR-117" value="&lt;b&gt;MMC Compatible Card&lt;br&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=3;fillColor=#d5e8d4;strokeColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="-20" y="230" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2uSTLxT4_c2NakCa3-PR-118" value="&lt;b&gt;Camera&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=3;fillColor=#d5e8d4;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="739.5" y="230" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2uSTLxT4_c2NakCa3-PR-125" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;strokeColor=#990000;strokeWidth=2;startArrow=classic;startFill=1;" edge="1" parent="1" source="2uSTLxT4_c2NakCa3-PR-120" target="5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2uSTLxT4_c2NakCa3-PR-120" value="&lt;b&gt;Ultra Sonic Sensor&lt;br&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=3;fillColor=#d5e8d4;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="-10" y="560" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

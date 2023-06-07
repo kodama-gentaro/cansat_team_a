@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-06-07T10:55:36.932Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0" etag="KqtYMAqKaU6A-Nd1c7qA" version="21.3.7" type="github">
+<mxfile host="app.diagrams.net" modified="2023-06-07T11:00:19.849Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0" etag="Mqq6_6EygvRxW_M8gI4z" version="21.3.7" type="github">
   <diagram id="6a731a19-8d31-9384-78a2-239565b7b9f0" name="Page-1">
     <mxGraphModel dx="882" dy="518" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="none" math="0" shadow="0">
       <root>
@@ -140,6 +140,9 @@
         </mxCell>
         <mxCell id="FPxvWhlNKRexlUQ8UXPV-94" value="三角コーンとの角度の偏差" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" vertex="1" parent="1">
           <mxGeometry x="534.38" y="220" width="211.25" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="FPxvWhlNKRexlUQ8UXPV-98" value="" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="565.01" y="350" width="150" height="50" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-06-07T10:36:37.995Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0" etag="St_E8hpSYNjKQ19YZS9M" version="21.3.7" type="github">
+<mxfile host="app.diagrams.net" modified="2023-06-07T10:55:36.932Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0" etag="KqtYMAqKaU6A-Nd1c7qA" version="21.3.7" type="github">
   <diagram id="6a731a19-8d31-9384-78a2-239565b7b9f0" name="Page-1">
-    <mxGraphModel dx="794" dy="466" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="none" math="0" shadow="0">
+    <mxGraphModel dx="882" dy="518" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -94,16 +94,52 @@
           <mxGeometry x="221.87" y="490" width="196.25" height="60" as="geometry" />
         </mxCell>
         <mxCell id="FPxvWhlNKRexlUQ8UXPV-80" value="Yes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="400" y="490" width="60" height="30" as="geometry" />
+          <mxGeometry x="316" y="550" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="FPxvWhlNKRexlUQ8UXPV-95" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="FPxvWhlNKRexlUQ8UXPV-82" target="FPxvWhlNKRexlUQ8UXPV-89">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="321" y="630" />
+              <mxPoint x="480" y="630" />
+              <mxPoint x="480" y="40" />
+              <mxPoint x="640" y="40" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="FPxvWhlNKRexlUQ8UXPV-82" value="パラシュート分離" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
           <mxGeometry x="266" y="580" width="110" height="30" as="geometry" />
         </mxCell>
         <mxCell id="FPxvWhlNKRexlUQ8UXPV-84" value="No" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="315" y="550" width="60" height="30" as="geometry" />
+          <mxGeometry x="400" y="490" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="FPxvWhlNKRexlUQ8UXPV-86" value="５秒待機" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
           <mxGeometry x="261" y="400" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="FPxvWhlNKRexlUQ8UXPV-92" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="FPxvWhlNKRexlUQ8UXPV-89">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="639.9999999999998" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FPxvWhlNKRexlUQ8UXPV-89" value="三角コーンを検出" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="560" y="100" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="FPxvWhlNKRexlUQ8UXPV-90" value="No" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="631" y="170" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="FPxvWhlNKRexlUQ8UXPV-96" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="FPxvWhlNKRexlUQ8UXPV-91">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="639.9999999999998" y="60" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="780" y="130" />
+              <mxPoint x="780" y="60" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FPxvWhlNKRexlUQ8UXPV-91" value="Yes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="720" y="100" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="FPxvWhlNKRexlUQ8UXPV-94" value="三角コーンとの角度の偏差" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" vertex="1" parent="1">
+          <mxGeometry x="534.38" y="220" width="211.25" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

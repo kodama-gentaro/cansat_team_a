@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-06-07T11:08:20.622Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0" etag="v5lQRHTVlW-BfQKdp_W2" version="21.3.7" type="github">
+<mxfile host="app.diagrams.net" modified="2023-06-08T08:49:24.116Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0" etag="mdbhFKqKTU6jUSHGons_" version="21.3.7" type="github">
   <diagram id="6a731a19-8d31-9384-78a2-239565b7b9f0" name="Page-1">
-    <mxGraphModel dx="882" dy="518" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="none" math="0" shadow="0">
+    <mxGraphModel dx="794" dy="466" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -126,23 +126,60 @@
         <mxCell id="FPxvWhlNKRexlUQ8UXPV-90" value="No" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="631" y="170" width="60" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="FPxvWhlNKRexlUQ8UXPV-96" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="FPxvWhlNKRexlUQ8UXPV-91">
+        <mxCell id="FPxvWhlNKRexlUQ8UXPV-106" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="FPxvWhlNKRexlUQ8UXPV-91" target="FPxvWhlNKRexlUQ8UXPV-105">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="639.9999999999998" y="60" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="780" y="130" />
-              <mxPoint x="780" y="60" />
+              <mxPoint x="797" y="130" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="FPxvWhlNKRexlUQ8UXPV-91" value="Yes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="720" y="100" width="60" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="FPxvWhlNKRexlUQ8UXPV-94" value="三角コーンとの角度の偏差" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" vertex="1" parent="1">
-          <mxGeometry x="534.38" y="220" width="211.25" height="60" as="geometry" />
+        <mxCell id="FPxvWhlNKRexlUQ8UXPV-99" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="FPxvWhlNKRexlUQ8UXPV-94" target="FPxvWhlNKRexlUQ8UXPV-98">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="FPxvWhlNKRexlUQ8UXPV-98" value="" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="565.01" y="344" width="150" height="50" as="geometry" />
+        <mxCell id="FPxvWhlNKRexlUQ8UXPV-94" value="&lt;div&gt;三角コーンとの角度の偏差&lt;/div&gt;&lt;div&gt;（GPS,9-Axis）&lt;/div&gt;" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" vertex="1" parent="1">
+          <mxGeometry x="530" y="220" width="215.63" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="FPxvWhlNKRexlUQ8UXPV-103" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="FPxvWhlNKRexlUQ8UXPV-98">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="640" y="50" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="640" y="400" />
+              <mxPoint x="840" y="400" />
+              <mxPoint x="840" y="50" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FPxvWhlNKRexlUQ8UXPV-98" value="向きを合わせつつ前進" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="562.81" y="337" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="FPxvWhlNKRexlUQ8UXPV-110" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="FPxvWhlNKRexlUQ8UXPV-105" target="FPxvWhlNKRexlUQ8UXPV-109">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FPxvWhlNKRexlUQ8UXPV-105" value="距離センサが0m" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="710" y="450" width="174.99" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="FPxvWhlNKRexlUQ8UXPV-107" value="No" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="790" y="530" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="FPxvWhlNKRexlUQ8UXPV-113" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="FPxvWhlNKRexlUQ8UXPV-109" target="FPxvWhlNKRexlUQ8UXPV-112">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FPxvWhlNKRexlUQ8UXPV-109" value="&lt;div&gt;三角コーンとの角度の偏差&lt;/div&gt;&lt;div&gt;(Camera)&lt;/div&gt;" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" vertex="1" parent="1">
+          <mxGeometry x="691.87" y="563" width="211.25" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="FPxvWhlNKRexlUQ8UXPV-111" value="Yes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="884.99" y="450" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="FPxvWhlNKRexlUQ8UXPV-114" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="FPxvWhlNKRexlUQ8UXPV-112">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="981" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FPxvWhlNKRexlUQ8UXPV-112" value="向きを合わせつつ徐行" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="722.49" y="670" width="150" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

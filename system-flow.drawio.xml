@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-06-08T11:59:11.826Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0" etag="UQlDkNveoAeVJ0JlYSNC" version="21.3.7" type="github">
+<mxfile host="app.diagrams.net" modified="2023-06-09T01:31:05.495Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0" etag="KuofAiTKJHJ0YJau3ANd" version="21.3.7" type="github">
   <diagram id="6a731a19-8d31-9384-78a2-239565b7b9f0" name="Page-1">
     <mxGraphModel dx="1687" dy="878" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="none" math="0" shadow="0">
       <root>
@@ -30,15 +30,20 @@
         <mxCell id="FPxvWhlNKRexlUQ8UXPV-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="FPxvWhlNKRexlUQ8UXPV-61" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="320" y="250" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="321" y="250" />
+              <mxPoint x="321" y="271" />
+              <mxPoint x="300" y="271" />
+              <mxPoint x="264" y="270" />
+            </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="FPxvWhlNKRexlUQ8UXPV-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="FPxvWhlNKRexlUQ8UXPV-61" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="320" y="270" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="430" y="320" />
+              <mxPoint x="430" y="330" />
               <mxPoint x="430" y="270" />
-              <mxPoint x="320" y="270" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -47,11 +52,11 @@
             <mxPoint x="320" y="400" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="FPxvWhlNKRexlUQ8UXPV-61" value="超音波センサ&amp;lt;5cm" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" parent="1" vertex="1">
-          <mxGeometry x="241.24" y="290" width="157.5" height="60" as="geometry" />
+        <mxCell id="FPxvWhlNKRexlUQ8UXPV-61" value="&lt;div&gt;超音波距離センサが5cm以下を示す&lt;/div&gt;&lt;div&gt;（筒の中にある）&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="100" y="290" width="298.74" height="80" as="geometry" />
         </mxCell>
         <mxCell id="FPxvWhlNKRexlUQ8UXPV-65" value="Yes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="375" y="290" width="60" height="30" as="geometry" />
+          <mxGeometry x="380" y="300" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="FPxvWhlNKRexlUQ8UXPV-67" value="No" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="310" y="357" width="60" height="30" as="geometry" />
@@ -68,7 +73,7 @@
           <mxGeometry x="270" y="200" width="100" height="60" as="geometry" />
         </mxCell>
         <mxCell id="FPxvWhlNKRexlUQ8UXPV-74" value="センサチェック" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="291" y="224" width="60" height="30" as="geometry" />
+          <mxGeometry x="291" y="215" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="FPxvWhlNKRexlUQ8UXPV-79" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="FPxvWhlNKRexlUQ8UXPV-77" edge="1">
           <mxGeometry relative="1" as="geometry">
@@ -82,7 +87,7 @@
         <mxCell id="FPxvWhlNKRexlUQ8UXPV-83" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="FPxvWhlNKRexlUQ8UXPV-77" target="FPxvWhlNKRexlUQ8UXPV-82" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="FPxvWhlNKRexlUQ8UXPV-77" value="加速度が9.8m/s^2で安定" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" parent="1" vertex="1">
+        <mxCell id="FPxvWhlNKRexlUQ8UXPV-77" value="加速度が下向きで安定" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" parent="1" vertex="1">
           <mxGeometry x="221.87" y="490" width="196.25" height="60" as="geometry" />
         </mxCell>
         <mxCell id="FPxvWhlNKRexlUQ8UXPV-80" value="Yes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
@@ -118,10 +123,11 @@
         <mxCell id="FPxvWhlNKRexlUQ8UXPV-90" value="No" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="631" y="170" width="60" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="FPxvWhlNKRexlUQ8UXPV-106" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="FPxvWhlNKRexlUQ8UXPV-91" target="FPxvWhlNKRexlUQ8UXPV-105" edge="1">
+        <mxCell id="FPxvWhlNKRexlUQ8UXPV-106" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0.49;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="FPxvWhlNKRexlUQ8UXPV-91" target="FPxvWhlNKRexlUQ8UXPV-105" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="968" y="130" />
+              <mxPoint x="990" y="130" />
+              <mxPoint x="990" y="170" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -148,34 +154,36 @@
         </mxCell>
         <mxCell id="FPxvWhlNKRexlUQ8UXPV-110" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="FPxvWhlNKRexlUQ8UXPV-105" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="967.5049999999999" y="283" as="targetPoint" />
+            <mxPoint x="1027.5049999999999" y="283" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="6OMrDGAIAm4hOAT2KEjX-50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="FPxvWhlNKRexlUQ8UXPV-105" target="6OMrDGAIAm4hOAT2KEjX-49">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="FPxvWhlNKRexlUQ8UXPV-105" value="超音波距離センサが0m" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" parent="1" vertex="1">
-          <mxGeometry x="880.01" y="170" width="174.99" height="70" as="geometry" />
+        <mxCell id="FPxvWhlNKRexlUQ8UXPV-105" value="&lt;div&gt;超音波距離センサが10cm以下&lt;/div&gt;&lt;div&gt;（三角コーンを検知）&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="870" y="170" width="245" height="80" as="geometry" />
         </mxCell>
         <mxCell id="FPxvWhlNKRexlUQ8UXPV-107" value="No" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="960.01" y="250" width="60" height="30" as="geometry" />
+          <mxGeometry x="1020.01" y="250" width="60" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="FPxvWhlNKRexlUQ8UXPV-113" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" target="FPxvWhlNKRexlUQ8UXPV-112" edge="1">
+        <mxCell id="FPxvWhlNKRexlUQ8UXPV-113" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="967.5049999999999" y="353" as="sourcePoint" />
+            <mxPoint x="1027.5049999999999" y="353" as="sourcePoint" />
+            <mxPoint x="1027.5" y="390" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="FPxvWhlNKRexlUQ8UXPV-111" value="Yes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="1055" y="170" width="60" height="30" as="geometry" />
+          <mxGeometry x="1115" y="170" width="60" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="FPxvWhlNKRexlUQ8UXPV-114" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="FPxvWhlNKRexlUQ8UXPV-112" edge="1">
+        <mxCell id="FPxvWhlNKRexlUQ8UXPV-114" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="970.01" y="160" as="targetPoint" />
+            <mxPoint x="990" y="150" as="targetPoint" />
+            <mxPoint x="1027.5" y="430" as="sourcePoint" />
             <Array as="points">
-              <mxPoint x="967.01" y="470" />
-              <mxPoint x="1160.01" y="470" />
-              <mxPoint x="1160.01" y="160" />
-              <mxPoint x="970.01" y="160" />
+              <mxPoint x="1028" y="470" />
+              <mxPoint x="1220" y="470" />
+              <mxPoint x="1220" y="150" />
+              <mxPoint x="990" y="150" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -195,7 +203,7 @@
           <mxGeometry x="565" y="220" width="150" height="60" as="geometry" />
         </mxCell>
         <mxCell id="6OMrDGAIAm4hOAT2KEjX-49" value="終了" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="1010.01" y="540" width="140" height="40" as="geometry" />
+          <mxGeometry x="1070.01" y="540" width="140" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

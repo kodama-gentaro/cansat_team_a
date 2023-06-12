@@ -1,5 +1,6 @@
 @echo off
 cd src
+call "../.venv/Scripts/mpremote.exe" rm :*
 FOR %%f IN (*.py) do (
     echo %%f
     call "../.venv/Scripts/mpremote.exe" cp %%f :

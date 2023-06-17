@@ -10,7 +10,7 @@ SPI_MISO = 16
 SPI_BANDRATE = 32000000
 FILE_TITLE = "starrail"
 
-class SDcardCS:
+class SDcard:
     def __init__(self):
         i = 0
         while i < 5:

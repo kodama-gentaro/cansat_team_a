@@ -13,8 +13,9 @@
       <sourceFolder url="file://$MODULE_DIR$/.micropy/BradenM-micropy-stubs-4f5a52a" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/.micropy/micropy-cli" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Python 3.11 (cansat_team_a) (3)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="MicroPython" level="project" />
   </component>

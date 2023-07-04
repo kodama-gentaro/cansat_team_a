@@ -1,16 +1,53 @@
-from machine import Pin
+import machine
+import utime
+from machine import PWM
 
+def init():
+    global Motor1
+    global Motor2
+    global Motor3
+    global Motor4
+    Motor1 = PWM(machine.Pin(8, machine.Pin.OUT))
+    Motor2 = PWM(machine.Pin(7, machine.Pin.OUT))
+    Motor3 = PWM(machine.Pin(10, machine.Pin.OUT))
+    Motor4 = PWM(machine.Pin(11, machine.Pin.OUT))
 
-class Motor:
-    def __init__(self, pin_1_A:Pin, pin_1_B:Pin, pin_2_A:Pin, pin_2_B:Pin):
-        self.pin_1_A = pin_1_A
-        self.pin_1_B = pin_1_B
-        self.pin_2_A = pin_2_A
-        self.pin_2_B = pin_2_B
-
-    #左右のタイヤの速度を、最大１、最小ー１の実数で設定できる関数
-    def set_speed(self, left, right):
-        #ここに処理を書く
-
-    def stop(self):
-        self.set_speed(0, 0)
+    #IN1.value(0)
+    #IN2.value(1)
+    Motor1.freq(500)
+    Motor2.freq(500)
+    Motor3.freq(500)
+    Motor4.freq(500)
+    Motor1.duty_u16(0)
+    Motor2.duty_u16(0)
+    Motor3.duty_u16(0)
+    Motor4.duty_u16(0)
+def set_motor(r,l):
+    x = 0
+    if r>0 :
+        x = 65536*r
+        x = int(x)
+        Motor1.duty_u16(x)
+        Motor2.duty_u16(0)
+        
+        
+    else :
+        x = 65536*(-r)
+        x = int(x)
+        Motor1.duty_u16(0)
+        Motor2.duty_u16(x)
+    
+    if l>0 :
+        x = 65536*l
+        x = int(x)
+        Motor3.duty_u16(x)
+        Motor4.duty_u16(0)
+        
+        
+    else :
+        x = 65536*(-l)
+        x = int(x)
+        Motor3.duty_u16(0)
+        Motor4.duty_u16(x)
+init()
+set_motor(0,0)

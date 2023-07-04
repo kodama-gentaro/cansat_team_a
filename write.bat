@@ -6,3 +6,5 @@ FOR %%f IN (*.py) do (
 )
 call "../.venv/Scripts/mpremote.exe" rm :main.py
 call "../.venv/Scripts/mpremote.exe" run main.py
+
+pause

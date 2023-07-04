@@ -19,3 +19,5 @@ class NineAxisSensor:
     def get_angle(self):
         return x, y, z
 
+get_accel()
+

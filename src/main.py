@@ -1,15 +1,14 @@
 from machine import Pin
 from utime import sleep
-from cs_gps import GPS
-from cs_sdcard import SDCard
-from cs_motor_driver import Motor
-from cs_nine_axis_sensor import NineAxisSensor
+import cs_gps
+import cs_sdcard
+import cs_motor_driver
+import cs_nine_axis_sensor
 import test
 
 
 
 
-while True:
 
 
 

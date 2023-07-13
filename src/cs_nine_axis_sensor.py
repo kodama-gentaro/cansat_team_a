@@ -25,7 +25,10 @@ def get_accvalue():
                 acc_x = sensor.accel()[0] - offset[0]
                 acc_y = sensor.accel()[1] - offset[1]
                 acc_z = sensor.accel()[2] - offset[2]
-
+                
+                if acc_x == 0.0 and acc_y == 0.0 and acc_z == 0.0:
+                    raise OSError
+                
                 #加速度
                 return acc_x,acc_y,acc_z
                 
@@ -47,6 +50,9 @@ def get_gyrvalue():
                 gyr_x = sensor.gyro()[0] - offset[3]
                 gyr_y = sensor.gyro()[1] - offset[4]
                 gyr_z = sensor.gyro()[2] - offset[5]
+                
+                if gyr_x == 0.0 and gyr_y == 0.0 and gyr_z == 0.0:
+                    raise OSError
                 
                 #角速度
                 return gyr_x,gyr_y,gyr_z
@@ -70,6 +76,9 @@ def get_magvalue():
                 mag_y = sensor.mag()[1] - offset[7]
                 mag_z = sensor.mag()[2] - offset[8]
                 
+                if mag_x == 0.0 and mag_y == 0.0 and mag_z == 0.0:
+                    raise OSError
+                
                 #地磁気
                 return mag_x,mag_y,mag_z
                 
@@ -92,6 +101,9 @@ def get_eulervalue():
                 euler_y = sensor.euler()[1] - offset[10]
                 euler_z = sensor.euler()[2] - offset[11]
                 
+                if euler_x == 0.0 and euler_y == 0.0 and euler_z == 0.0:
+                    raise OSError
+                
                 #オイラー角
                 return euler_x,euler_y,euler_z
             
@@ -100,6 +112,7 @@ def get_eulervalue():
         else:
             break
     raise OSError
+
 
 
 

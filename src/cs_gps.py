@@ -52,11 +52,11 @@ while True:
     print('Lng:', longitude)
     print(type(latitude))
     
-    
+
     lightsleep(5000)
     
-    lat1 = ('Lat:') # Current latitude
-    lon1 = ('Lng:')# Current longitude
+    lat1 = (latitude) # Current latitude
+    lon1 = (longtitude)# Current longitude
     lat2 = 33.597608# Destination latitude
     lon2 = 130.224240 # Destination longitude
 

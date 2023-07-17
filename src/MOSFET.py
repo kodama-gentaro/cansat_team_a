@@ -4,7 +4,7 @@ from machine import Pin
 
 IN1 = machine.Pin(10, machine.Pin.IN,Pin.PULL_DOWN)
 IN2 = machine.Pin(11,machine.Pin.OUT)
-p7 = machine.Pin(0, machine.Pin.OUT)
+p7 = machine.Pin(7, machine.Pin.OUT)
 
 IN2.value(1)
 
@@ -17,3 +17,4 @@ while True:
         break
     else:
         print("A")
+    utine.sleep(0.5)

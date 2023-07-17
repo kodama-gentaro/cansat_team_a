@@ -5,7 +5,7 @@ from bno055 import BNO055
 
 def init():
     global i2c
-    i2c = SoftI2C(scl=Pin(7), sda=Pin(6), freq=10000)
+    i2c = SoftI2C(scl=Pin(4), sda=Pin(5), freq=10000)
     global sensor
     sensor = BNO055(i2c)
     global offset
@@ -90,7 +90,7 @@ def get_magvalue():
        
 
 def get_eulervalue():
-    a=5
+    a=50
     count=0
     while True:
         a-=1
@@ -100,7 +100,7 @@ def get_eulervalue():
                 euler_x = sensor.euler()[0] - offset[9]
                 euler_y = sensor.euler()[1] - offset[10]
                 euler_z = sensor.euler()[2] - offset[11]
-                
+        
                 if euler_x == 0.0 and euler_y == 0.0 and euler_z == 0.0:
                     raise OSError
                 

@@ -114,5 +114,3 @@ def get_eulervalue():
     raise OSError
 
 
-
-

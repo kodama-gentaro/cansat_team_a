@@ -53,6 +53,17 @@ def th2nd(a,b):
     y1_rad=math.radians(b)
     return th2 = 90 - math.degrees(math.atan2(math.sin(x2_rad - x1_rad), math.cos(y1_rad) * math.tan(y2_rad) - math.sin(y1_rad) * math.cos(x2_rad - x1_rad)))#中間地点の方位算出
 
+def distance_second(c,d):
+    x1_rad=math.radians(c)
+    y1_rad=math.radians(d)
+    return distance_2=r*math.acos(math.sin(y1_rad) * math.sin(y3_rad) + math.cos(y1_rad) * math.cos(y3_rad) * math.cos(x3_rad - x1_rad))#コーンとの距離算出
+
+def th3rd(c,d):
+    x1_rad=math.radians(c)
+    y1_rad=math.radians(d)
+    return th3 = 90 - math.degrees(math.atan2(math.sin(x3_rad - x1_rad), math.cos(y3_rad) * math.tan(y3_rad) - math.sin(y1_rad) * math.cos(x3_rad - x1_rad)))#コーンの方位算出
+
+
 while True:
     print(imu.get_eulervalue())
     th1 = imu.get_eulervalue()[0]
@@ -81,16 +92,6 @@ while True:
                  md.set_motor(-1, 1)
     else:
         break    #この時点でdes1に到着
-
-def distance_second(c,d):
-    x1_rad=math.radians(c)
-    y1_rad=math.radians(d)
-    return distance_2=r*math.acos(math.sin(y1_rad) * math.sin(y3_rad) + math.cos(y1_rad) * math.cos(y3_rad) * math.cos(x3_rad - x1_rad))#コーンとの距離算出
-
-def th3rd(c,d):
-    x1_rad=math.radians(c)
-    y1_rad=math.radians(d)
-    return th3 = 90 - math.degrees(math.atan2(math.sin(x3_rad - x1_rad), math.cos(y3_rad) * math.tan(y3_rad) - math.sin(y1_rad) * math.cos(x3_rad - x1_rad)))#コーンの方位算出
 
 while True:
     print(imu.get_eulervalue())
@@ -121,5 +122,15 @@ while True:
     else:
         break    #この時点でdes2にのこり5m。ここからカメラ移行のプログラミングをつける
 
-def letsgo(camera):
+"""while True:
     
+    tandem=get_cameravalue()
+    
+    if tandem > 20:
+        md.set_motor(1,-1)
+    
+    elif tandem < -20:
+        md.set_motor(-1.1)
+    
+    else:
+        md.set_motor(1.1)"""

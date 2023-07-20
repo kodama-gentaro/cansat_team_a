@@ -1,20 +1,14 @@
-<mxfile host="app.diagrams.net" modified="2023-06-09T01:31:46.157Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0" etag="na293mB_nRkj8se95Dcf" version="21.3.7" type="github">
+<mxfile host="app.diagrams.net" modified="2023-07-20T09:51:42.222Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/115.0" etag="FiCdRzo0PWNDQyTDyHqg" version="21.5.2" type="github">
   <diagram name="Page-1" id="c7558073-3199-34d8-9f00-42111426c3f3">
-    <mxGraphModel dx="1687" dy="2047" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="826" pageHeight="1169" background="none" math="0" shadow="0">
+    <mxGraphModel dx="794" dy="1635" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="826" pageHeight="1169" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="5" value="Raspberry Pi Pico" style="shape=process;whiteSpace=wrap;align=center;verticalAlign=middle;size=0.0475;fontStyle=1;strokeWidth=3;fillColor=#FFCCCC;fontSize=14;" parent="1" vertex="1">
           <mxGeometry x="269.9999999999999" y="480" width="400" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="2MUS-c-cnUxCTHkRLb69-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#990000;" parent="1" source="2uSTLxT4_c2NakCa3-PR-101" target="2uSTLxT4_c2NakCa3-PR-106" edge="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
         <mxCell id="2uSTLxT4_c2NakCa3-PR-101" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Motor&lt;/font&gt;&lt;/b&gt; &lt;b&gt;Driver&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=3;fillColor=#d5e8d4;strokeColor=#000000;" parent="1" vertex="1">
           <mxGeometry x="415" y="665" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="2uSTLxT4_c2NakCa3-PR-106" value="&lt;div style=&quot;font-size: 14px;&quot;&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Motor&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=3;fillColor=#fff2cc;strokeColor=#000000;" parent="1" vertex="1">
-          <mxGeometry x="665" y="665" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="2uSTLxT4_c2NakCa3-PR-108" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Current Sense Amp&lt;br&gt;&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=3;fillColor=#d5e8d4;strokeColor=#000000;" parent="1" vertex="1">
           <mxGeometry x="413" y="400" width="120" height="60" as="geometry" />

@@ -17,4 +17,4 @@ while True:
         break
     else:
         print("A")
-    utine.sleep(0.5)
+    utime.sleep(0.5)

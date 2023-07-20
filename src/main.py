@@ -28,7 +28,7 @@ imu.init()
 
 md.set_motor(0, 0)
 
-x1=latitude
+"""x1=latitude
 y1=longtitude
 x2=#本番の南側のポイントの緯度
 y2=#南経度                     ここは本番で入力
@@ -39,21 +39,30 @@ y1_rad=math.radians(y1)
 x2_rad=math.radians(x2)
 y2_rad=math.radians(y2)
 x3_rad=math.radians(x3)
-y3_rad=math.radians(y3)
+y3_rad=math.radians(y3)"""
 
 r=6378137
-distance_first=r*math.acos(math.sin(y1_rad) * math.sin(y2_rad) + math.cos(y1_rad) * math.cos(y2_rad) * math.cos(x2_rad - x1_rad))#中間地点との距離算出
-th2= 90 - math.degrees(math.atan2(math.sin(x2_rad - x1_rad), math.cos(y1_rad) * math.tan(y2_rad) - math.sin(y1_rad) * math.cos(x2_rad - x1_rad)))#中間地点の方位算出
 
-distance_second=r*math.acos(math.sin(y1_rad) * math.sin(y3_rad) + math.cos(y1_rad) * math.cos(y3_rad) * math.cos(x3_rad - x1_rad))#コーンとの距離算出
-th3= 90 - math.degrees(math.atan2(math.sin(x3_rad - x1_rad), math.cos(y3_rad) * math.tan(y3_rad) - math.sin(y1_rad) * math.cos(x3_rad - x1_rad)))#コーンの方位算出
+def distance_first(a,b):
+    x1_rad=math.radians(a)
+    y1_rad=math.radians(b)
+    return distance_1 = r*math.acos(math.sin(y1_rad) * math.sin(y2_rad) + math.cos(y1_rad) * math.cos(y2_rad) * math.cos(x2_rad - x1_rad))#中間地点との距離算出
 
+def th2nd(a,b):
+    x1_rad=math.radians(a)
+    y1_rad=math.radians(b)
+    return th2 = 90 - math.degrees(math.atan2(math.sin(x2_rad - x1_rad), math.cos(y1_rad) * math.tan(y2_rad) - math.sin(y1_rad) * math.cos(x2_rad - x1_rad)))#中間地点の方位算出
 
 while True:
     print(imu.get_eulervalue())
     th1 = imu.get_eulervalue()[0]
     print(th1)
-    if distance_first > 2:
+    
+    x1,y1 = gps.get_coordinate()
+    distance_first(x1,y1)
+    th2nd(x1,y1)
+    
+    if distance_1 > 2:
      if th1 > th2:
         if th1 - th2 < 5:
             md.set_motor(1, 1)
@@ -73,11 +82,26 @@ while True:
     else:
         break    #この時点でdes1に到着
 
+def distance_second:
+    x1_rad=math.radians(c)
+    y1_rad=math.radians(d)
+    return distance_2=r*math.acos(math.sin(y1_rad) * math.sin(y3_rad) + math.cos(y1_rad) * math.cos(y3_rad) * math.cos(x3_rad - x1_rad))#コーンとの距離算出
+
+def th3rd:
+    x1_rad=math.radians(c)
+    y1_rad=math.radians(d)
+    return th3 = 90 - math.degrees(math.atan2(math.sin(x3_rad - x1_rad), math.cos(y3_rad) * math.tan(y3_rad) - math.sin(y1_rad) * math.cos(x3_rad - x1_rad)))#コーンの方位算出
+
 while True:
     print(imu.get_eulervalue())
     th1 = imu.get_eulervalue()[0]
     print(th1)
-    if distance_second >5:
+    
+    x1,y1 = gps.get_coordinate()
+    distance_second(x1,y1)
+    th3rd(x1,y1)
+    
+    if distance_2 >5:
      if th1 > th3:
         if th1 - th3 < 5:
             md.set_motor(1, 1)

@@ -82,12 +82,12 @@ while True:
     else:
         break    #この時点でdes1に到着
 
-def distance_second:
+def distance_second(c,d):
     x1_rad=math.radians(c)
     y1_rad=math.radians(d)
     return distance_2=r*math.acos(math.sin(y1_rad) * math.sin(y3_rad) + math.cos(y1_rad) * math.cos(y3_rad) * math.cos(x3_rad - x1_rad))#コーンとの距離算出
 
-def th3rd:
+def th3rd(c,d):
     x1_rad=math.radians(c)
     y1_rad=math.radians(d)
     return th3 = 90 - math.degrees(math.atan2(math.sin(x3_rad - x1_rad), math.cos(y3_rad) * math.tan(y3_rad) - math.sin(y1_rad) * math.cos(x3_rad - x1_rad)))#コーンの方位算出
@@ -120,3 +120,6 @@ while True:
                  md.set_motor(-1, 1)
     else:
         break    #この時点でdes2にのこり5m。ここからカメラ移行のプログラミングをつける
+
+def letsgo(camera):
+    

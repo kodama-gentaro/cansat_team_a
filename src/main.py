@@ -4,7 +4,7 @@ import cs_gps as gps
 import cs_sdcard as sd
 import cs_motor_driver as md
 import cs_nine_axis_sensor as imu
-import math as m
+import math 
 
 IN1 = machine.Pin(10, machine.Pin.IN,Pin.PULL_DOWN)
 IN2 = machine.Pin(11, machine.Pin.OUT)
@@ -16,12 +16,12 @@ while True:
     print(IN1.value())
     if IN1.value() == 0 :
         p7.value(1)
-        utime.sleep(8)
+        sleep(8)
         p7.value(0)
         break
     else :
         print("A")
-    utime.sleep(0.5)
+    sleep(0.5)
 
 md.init()
 imu.init()
@@ -46,23 +46,26 @@ r=6378137
 def distance_first(a,b):
     x1_rad=math.radians(a)
     y1_rad=math.radians(b)
-    return distance_1 = r*math.acos(math.sin(y1_rad) * math.sin(y2_rad) + math.cos(y1_rad) * math.cos(y2_rad) * math.cos(x2_rad - x1_rad))#中間地点との距離算出
+    distance_1 = r*math.acos(math.sin(y1_rad) * math.sin(y2_rad) + math.cos(y1_rad) * math.cos(y2_rad) * math.cos(x2_rad - x1_rad))#中間地点との距離算出
+    return distance_1
 
 def th2nd(a,b):
     x1_rad=math.radians(a)
     y1_rad=math.radians(b)
-    return th2 = 90 - math.degrees(math.atan2(math.sin(x2_rad - x1_rad), math.cos(y1_rad) * math.tan(y2_rad) - math.sin(y1_rad) * math.cos(x2_rad - x1_rad)))#中間地点の方位算出
+    th2 = 90 - math.degrees(math.atan2(math.sin(x2_rad - x1_rad), math.cos(y1_rad) * math.tan(y2_rad) - math.sin(y1_rad) * math.cos(x2_rad - x1_rad)))#中間地点の方位算出
+    return th2
 
 def distance_second(c,d):
     x1_rad=math.radians(c)
     y1_rad=math.radians(d)
-    return distance_2=r*math.acos(math.sin(y1_rad) * math.sin(y3_rad) + math.cos(y1_rad) * math.cos(y3_rad) * math.cos(x3_rad - x1_rad))#コーンとの距離算出
+    distance_2=r*math.acos(math.sin(y1_rad) * math.sin(y3_rad) + math.cos(y1_rad) * math.cos(y3_rad) * math.cos(x3_rad - x1_rad))#コーンとの距離算出
+    return distance_2
 
 def th3rd(c,d):
     x1_rad=math.radians(c)
     y1_rad=math.radians(d)
-    return th3 = 90 - math.degrees(math.atan2(math.sin(x3_rad - x1_rad), math.cos(y3_rad) * math.tan(y3_rad) - math.sin(y1_rad) * math.cos(x3_rad - x1_rad)))#コーンの方位算出
-
+    th3 = 90 - math.degrees(math.atan2(math.sin(x3_rad - x1_rad), math.cos(y3_rad) * math.tan(y3_rad) - math.sin(y1_rad) * math.cos(x3_rad - x1_rad)))#コーンの方位算出
+    return th3
 
 while True:
     print(imu.get_eulervalue())

@@ -28,12 +28,12 @@ imu.init()
 
 md.set_motor(0, 0)
 
-"""x1=latitude
-y1=longtitude
-x2=#本番の南側のポイントの緯度
-y2=#南経度                     ここは本番で入力
-x3=#カラーコーンの緯度
-y3=#経度
+"""x1=longtitude(経度）
+y1=latitude（緯度）
+x2=#本番の南側のポイントの経度
+y2=#南緯度                     ここは本番で入力
+x3=#カラーコーンの経度
+y3=#緯度
 x1_rad=math.radians(x1)
 y1_rad=math.radians(y1)
 x2_rad=math.radians(x2)

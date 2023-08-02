@@ -122,6 +122,31 @@ while True:
     else:
         break    #この時点でdes2にのこり5m。ここからカメラ移行のプログラミングをつける
 
+pinX = machine.pin(26,Pin.IN)
+pinY = machine.pin(27,Pin.IN)
+
+def go_destination(i):
+    return i.value()
+
+while True:
+    X = go_destination(pinX)
+    Y = go_destination(pinY)
+    
+    if X==Y==0:
+        md.set_motor(1,1)
+    
+    
+    elif X=1 and Y=0:
+        md.set_motor(1,-1)
+    
+    elif X=0 and Y=1:
+        md.set_motor(-1,1)
+    
+    else:
+        md.set_motor(0,0)
+
+
+
 """while True:
     
     tandem=get_cameravalue()

@@ -79,17 +79,17 @@ while True:
             md.set_motor(1, 1)
         else:
             if th1 - th2 <= 180:
-                md.set_motor(-1, 1)
+                md.set_motor(0.6, 1)
             else:
-                md.set_motor(1, -1)
+                md.set_motor(1, 0.6)
      else:
          if th2 - th1 < 5:
              md.set_motor(1, 1)
          else:
              if th2 - th1 <= 180:
-                 md.set_motor(1, -1)
+                 md.set_motor(1, 0.6)
              else:
-                 md.set_motor(-1, 1)
+                 md.set_motor(0.6, 1)
     else:
         break    #この時点でdes1に到着
 
@@ -108,17 +108,17 @@ while True:
             md.set_motor(1, 1)
         else:
             if th1 - th3 <= 180:
-                md.set_motor(-1, 1)
+                md.set_motor(0.6, 1)
             else:
-                md.set_motor(1, -1)
+                md.set_motor(1, 0.6)
      else:
          if th3 - th1 < 5:
              md.set_motor(1, 1)
          else:
              if th3 - th1 <= 180:
-                 md.set_motor(1, -1)
+                 md.set_motor(1, 0.6)
              else:
-                 md.set_motor(-1, 1)
+                 md.set_motor(0.6, 1)
     else:
         break    #この時点でdes2にのこり5m。ここからカメラ移行のプログラミングをつける
 

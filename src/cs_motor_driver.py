@@ -9,8 +9,8 @@ def init():
     global Motor4
     Motor1 = PWM(machine.Pin(13, machine.Pin.OUT))
     Motor2 = PWM(machine.Pin(12, machine.Pin.OUT))
-    Motor3 = PWM(machine.Pin(15, machine.Pin.OUT))
-    Motor4 = PWM(machine.Pin(14, machine.Pin.OUT))
+    Motor3 = PWM(machine.Pin(14, machine.Pin.OUT))
+    Motor4 = PWM(machine.Pin(15, machine.Pin.OUT))
 
     #IN1.value(0)
     #IN2.value(1)

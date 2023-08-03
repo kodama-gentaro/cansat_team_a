@@ -5,17 +5,19 @@ from micropyGPS import MicropyGPS
 
 import math
 
+
 def init():
     global gps_module
     gps_module = UART(0, baudrate=9600, tx=Pin(0), rx=Pin(1))
-    
+
     global TIMEZONE
     TIMEZONE = 9
-    
+
     global my_gps
     my_gps = MicropyGPS(TIMEZONE)
 
-#緯度(latitude)と経度(longitude)を取得する関数を作って方向を±180で表示
+
+# 緯度(latitude)と経度(longitude)を取得する関数を作って方向を±180で表示
 def get_coordinate():
     latitude = 0.0
     longitude = 0.0
@@ -27,18 +29,21 @@ def get_coordinate():
                 for x in b:
                     msg = my_gps.update(chr(x))
             # _________________________________________________
-            lat_str = convert(my_gps.latitude)
-            long_str = convert(my_gps.longitude)
+            latitude = convert(my_gps.latitude)
+            longitude = convert(my_gps.longitude)
+            # _________________________________________________
+            if type(latitude) == str:
+                latitude = float(latitude)
 
             # _________________________________________________
-            if type(lat_str) == str:
-                latitude = float(lat_str)
-            if type(long_str) == str:
-                longitude = float(long_str)
-        except:
-            print("gps_warning")
-    return latitude, longitude
+            print('Lat:', latitude)
+            print('Lng:', longitude)
+            print(type(latitude))
+            break
 
+        except Exception as E:
+            pass
+    return latitude, longitude
 
 ##########################################################
 def convert(parts):
@@ -54,11 +59,9 @@ def convert(parts):
 
     data = '{0:.6f}'.format(data)  # to 6 decimal places
     return str(data)
+
+
 ##########################################################
-init()
-while True:
-    print(get_coordinate())
-    lightsleep(1000)
 
 
-# Define be
+

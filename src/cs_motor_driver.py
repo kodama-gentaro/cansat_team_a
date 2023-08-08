@@ -1,7 +1,7 @@
 import machine
 import utime
 from machine import PWM
-
+WAIT = 2/65536
 def init():
     global Motor1
     global Motor2
@@ -27,7 +27,9 @@ def set_motor(r,l):
     if r>0 :
         x = 65536*r
         x = int(x)
-        Motor1.duty_u16(x)
+        for i in range(x):
+             Motor1.duty_u16(x)
+             utime.sleep(WAIT)
         Motor2.duty_u16(0)
         
         
@@ -35,12 +37,17 @@ def set_motor(r,l):
         x = 65536*(-r)
         x = int(x)
         Motor1.duty_u16(0)
-        Motor2.duty_u16(x)
+        for i in range(x):
+             Motor2.duty_u16(x)
+             utime.sleep(WAIT)
+
     
     if l>0 :
         x = 65536*l
         x = int(x)
-        Motor3.duty_u16(x)
+        for i in range(x):
+             Motor3.duty_u16(x)
+             utime.sleep(WAIT)
         Motor4.duty_u16(0)
         
         
@@ -48,7 +55,10 @@ def set_motor(r,l):
         x = 65536*(-l)
         x = int(x)
         Motor3.duty_u16(0)
-        Motor4.duty_u16(x)
+        for i in range(x):
+             Motor4.duty_u16(x)
+             utime.sleep(WAIT)
+
 init()
 print("start")
 

@@ -38,10 +38,10 @@ md.set_motor(0, 0)
 dict[f'{ticks_ms()}'] = "start"
 # x1=longtitude(経度）
 # y1=latitude（緯度）
-x2 = 130.217721  # 本番の南側のポイントの経度
-y2 = 33.595055  # 南緯度                     ここは本番で入力
-x3 = 130.217721  # カラーコーンの経度
-y3 = 33.595055  # 緯度
+x2 = 130.21753  # 本番の南側のポイントの経度
+y2 = 33.59507  # 南緯度                     ここは本番で入力
+x3 = 130.21753 # カラーコーンの経度
+y3 = 33.59507  # 緯度
 # x1_rad=math.radians(x1)
 # y1_rad=math.radians(y1)
 x2_rad = math.radians(x2)
@@ -91,14 +91,14 @@ def th3rd(c, d):
 dict[f'{ticks_ms()}'] = "start"
 pinX = Pin(26, Pin.IN)
 pinY = Pin(27, Pin.IN)
-md.set_motor(0, 0)
+sleep(30000)
+md.set_motor(0.5, 0.5)
 sleep(1)
 while True:
     th1 = imu.get_eulervalue()[0]
     #print(imu.get_magvalue()[0])
-    #x1, y1 = gps.get_coordinate()
-    x1 = 130.217028
-    y1 = 33.594944
+    x1, y1 = gps.get_coordinate()
+    
     if x1 is None or x2 is None:
         continue
     distance_1 = distance_first(x1, y1)
@@ -114,30 +114,31 @@ while True:
 
         if th1 > th2:
             if th1 - th2 < 10:
-                #md.set_motor(1, 1)
+                md.set_motor(1, 1)
                 print('s')
             else:
                 if th1 - th2 <= 180:
-                    #md.set_motor(0.4, 1)
+                    md.set_motor(0.4, 1)
                     print('l')
                 else:
-                    #md.set_motor(1, 0.4)
+                    md.set_motor(1, 0.4)
                     print('r')
         else:
             if th2 - th1 < 10:
-                #md.set_motor(1, 1)
+                md.set_motor(1, 1)
                 print('s')
             else:
                 if th2 - th1 <= 180:
-                    #md.set_motor(1, 0.4)
+                    md.set_motor(1, 0.4)
                     print('r')
                 else:
-                    #md.set_motor(0.4, 1)
+                    md.set_motor(0.4, 1)
                     print('l')
     else:
         break  # この時点でdes1に到着
 
-
+md.set_motor(0.5, 0.5)
+sleep(1)
 while True:
     print(imu.get_eulervalue())
     th1 = imu.get_eulervalue()[0]
@@ -171,7 +172,8 @@ while True:
 
 
 
-
+md.set_motor(0.5, 0.5)
+sleep(1)
 while True:
     X = pinX.value()
     Y = pinY.value()
@@ -183,7 +185,7 @@ while True:
     elif X == 0 and Y == 1:
         md.set_motor(0.2, 0.4)
     else:
-        md.set_motor(0.3, 0)
+        md.set_motor(0.3, 0.2)
     sleep(0.5)
     md.set_motor(0, 0)
     sleep(0.5)

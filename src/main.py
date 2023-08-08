@@ -91,10 +91,13 @@ def th3rd(c, d):
 dict[f'{ticks_ms()}'] = "start"
 pinX = Pin(26, Pin.IN)
 pinY = Pin(27, Pin.IN)
+md.set_motor(0,0)
 sleep(10)
 while True:
+
+
     md.set_motor(0, 0)
-    sleep(2)
+    sleep(1)
     th1 = imu.get_eulervalue()[0]
     #print(imu.get_magvalue()[0])
     x1, y1 = gps.get_coordinate()
@@ -102,43 +105,48 @@ while True:
     Y = pinY.value()
     if not (X == Y == 1):
         break
-    
+
     if x1 is None or x2 is None:
         continue
     distance_1 = distance_first(x1, y1)
     th2 = th2nd(x1, y1)
-    th1 = th1 if th1 > 0 else th1 - 360
+    print(th1)
+    th1 = th1 if th1 <= 360 else th1 - 360
     th2 = th2 if th2 > 0 else 360 + th2
-    
+
     print(f'{x1} {y1} {distance_1} {th1} {th2}')
     #sd.write(f'{x1} {y1} {distance_1} {th1} {th2}')
-    
+
+    md.set_motor(0.5,0.5)
+    sleep(0.4)
     # dict[f'{ticks_ms()}'] = f"{th1} {th2}"
     if distance_1 > 5:
 
         if th1 > th2:
             if th1 - th2 < 10:
                 md.set_motor(1, 1)
-                
+
             else:
                 if th1 - th2 <= 180:
-                    md.set_motor(0.2, 1)
-                   
+                    md.set_motor(0.4, 1)
+
                 else:
-                    md.set_motor(1, 0.2)
-                 
+                    md.set_motor(1, 0.4)
+
         else:
             if th2 - th1 < 10:
                 md.set_motor(1, 1)
-             
+
             else:
                 if th2 - th1 <= 180:
-                    md.set_motor(1, 0.2)
-              
+                    md.set_motor(1, 0.4)
+
                 else:
-                    md.set_motor(0.2, 1)
-             
-        
+                    md.set_motor(0.4, 1)
+
+        sleep(0.4)
+
+
     else:
         break  # この時点でdes1に到着
 
@@ -185,11 +193,11 @@ while True:
     if X == Y == 0:
         md.set_motor(0.6, 0.7)
     elif X == 1 and Y == 0:
-        md.set_motor(0.4, 0.2)
+        md.set_motor(0.7, 0.2)
     elif X == 0 and Y == 1:
-        md.set_motor(0.2, 0.4)
+        md.set_motor(0.2, 0.7)
     else:
-        md.set_motor(0.3, 0.2)
+        md.set_motor(0.4, 0.2)
     sleep(0.5)
     md.set_motor(0, 0)
     sleep(0.5)

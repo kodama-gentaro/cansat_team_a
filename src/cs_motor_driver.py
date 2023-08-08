@@ -9,15 +9,15 @@ def init():
     global Motor4
     Motor1 = PWM(machine.Pin(13, machine.Pin.OUT))
     Motor2 = PWM(machine.Pin(12, machine.Pin.OUT))
-    Motor3 = PWM(machine.Pin(14, machine.Pin.OUT))
-    Motor4 = PWM(machine.Pin(15, machine.Pin.OUT))
+    Motor3 = PWM(machine.Pin(15, machine.Pin.OUT))
+    Motor4 = PWM(machine.Pin(14, machine.Pin.OUT))
 
     #IN1.value(0)
     #IN2.value(1)
-    Motor1.freq(500)
-    Motor2.freq(500)
-    Motor3.freq(500)
-    Motor4.freq(500)
+    Motor1.freq(5000)
+    Motor2.freq(5000)
+    Motor3.freq(5000)
+    Motor4.freq(5000)
     Motor1.duty_u16(0)
     Motor2.duty_u16(0)
     Motor3.duty_u16(0)
@@ -50,4 +50,5 @@ def set_motor(r,l):
         Motor3.duty_u16(0)
         Motor4.duty_u16(x)
 init()
-set_motor(0,0)
+print("start")
+

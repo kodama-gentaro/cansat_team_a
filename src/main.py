@@ -1,97 +1,135 @@
 from machine import Pin
-from utime import sleep
+from utime import sleep, ticks_ms
 import cs_gps as gps
 import cs_sdcard as sd
 import cs_motor_driver as md
 import cs_nine_axis_sensor as imu
 import math
+import ujson as json
 
-IN1 = Pin(10, Pin.IN,Pin.PULL_DOWN)
+IN1 = Pin(17, Pin.IN, Pin.PULL_UP)
 IN2 = Pin(11, Pin.OUT)
-p7 = Pin(7, Pin.OUT)
+p6 = Pin(6, Pin.OUT)
 
 IN2.value(1)
+dict = {}
+md.init()
+md.set_motor(0, 0)
 while True:
-    #print(IN1.value())
+    # print(IN1.value())
     print(IN1.value())
-    if IN1.value() == 0 :
-        p7.value(1)
-        sleep(8)
-        p7.value(0)
+    if IN1.value() == 1:
+        p6.value(1)
+        sleep(0)
+        p6.value(0)
+        print("para_deprecated")
         break
-    else :
+    else:
         print("A")
     sleep(0.5)
 
 md.init()
 imu.init()
-
+gps.init()
+#sd.init()
+#sd.write('para_deprecated')
+sleep(1)
 md.set_motor(0, 0)
+dict[f'{ticks_ms()}'] = "start"
+# x1=longtitude(経度）
+# y1=latitude（緯度）
+x2 = 130.217721  # 本番の南側のポイントの経度
+y2 = 33.595055  # 南緯度                     ここは本番で入力
+x3 = 130.217721  # カラーコーンの経度
+y3 = 33.595055  # 緯度
+# x1_rad=math.radians(x1)
+# y1_rad=math.radians(y1)
+x2_rad = math.radians(x2)
+y2_rad = math.radians(y2)
+x3_rad = math.radians(x3)
+y3_rad = math.radians(y3)
 
-#x1=longtitude(経度）
-#y1=latitude（緯度）
-x2=39.717098      #本番の南側のポイントの経度
-y2=140.129604      #南緯度                     ここは本番で入力
-x3=39.717098      #カラーコーンの経度
-y3=140.129604      #緯度
-#x1_rad=math.radians(x1)
-#y1_rad=math.radians(y1)
-x2_rad=math.radians(x2)
-y2_rad=math.radians(y2)
-x3_rad=math.radians(x3)
-y3_rad=math.radians(y3)
-
-r=6378137
-
-def distance_first(a,b):
-    x1_rad=math.radians(a)
-    y1_rad=math.radians(b)
-    return r*math.acos(math.sin(y1_rad) * math.sin(y2_rad) + math.cos(y1_rad) * math.cos(y2_rad) * math.cos(x2_rad - x1_rad))#中間地点との距離算出
-
-def th2nd(a,b):
-    x1_rad=math.radians(a)
-    y1_rad=math.radians(b)
-    return 90 - math.degrees(math.atan(math.sin(x2_rad - x1_rad)/( math.cos(y1_rad) * math.tan(y2_rad) - math.sin(y1_rad) * math.cos(x2_rad - x1_rad))))#中間地点の方位算出
-
-def distance_second(c,d):
-    x1_rad=math.radians(c)
-    y1_rad=math.radians(d)
-    return r*math.acos(math.sin(y1_rad) * math.sin(y3_rad) + math.cos(y1_rad) * math.cos(y3_rad) * math.cos(x3_rad - x1_rad))#コーンとの距離算出
-
-def th3rd(c,d):
-    x1_rad=math.radians(c)
-    y1_rad=math.radians(d)
-    return 90 - math.degrees(math.atan2(math.sin(x3_rad - x1_rad)/(math.cos(y3_rad) * math.tan(y3_rad) - math.sin(y1_rad) * math.cos(x3_rad - x1_rad))))#コーンの方位算出
+r = 6378137
 
 
+def distance_first(a, b):
+    x1_rad = math.radians(a)
+    y1_rad = math.radians(b)
+    #print(f"{x1_rad} {y1_rad} {x2_rad} {y2_rad}")
+    M = 6334834 / math.sqrt((1-0.0066744*math.sin((y1_rad + y2_rad) / 2.0)**2.0)**3.0)
+    N = 6377397 / math.sqrt(1-0.0066744*math.sin((y1_rad + y2_rad) / 2.0)**2.0)
+    dist = ((M*(y1_rad - y2_rad)) ** 2 + (N*(x1_rad - x2_rad)*math.cos((y1_rad + y2_rad) / 2.0)) ** 2.0) ** 0.5
+    #print(dist)
+    return dist
+
+def th2nd(a, b):
+    x1_rad = math.radians(a)
+    y1_rad = math.radians(b)
+    #print(f"{x1_rad} {y1_rad} {x2_rad} {y2_rad}")
+    return math.degrees(math.pi / 2 - math.atan2((
+                math.cos(y1_rad) * math.tan(y2_rad) - math.sin(y1_rad) * math.cos(x2_rad - x1_rad)),math.sin(x2_rad - x1_rad)))  # 中間地点の方位算出
+
+
+def distance_second(c, d):
+    x1_rad = math.radians(c)
+    y1_rad = math.radians(d)
+    # print(f"{x1_rad} {y1_rad} {x2_rad} {y2_rad}")
+    M = 6334834 / math.sqrt((1 - 0.0066744 * math.sin((y1_rad + y3_rad) / 2.0) ** 2.0) ** 3.0)
+    N = 6377397 / math.sqrt(1 - 0.0066744 * math.sin((y1_rad + y3_rad) / 2.0) ** 2.0)
+    dist = ((M * (y1_rad - y3_rad)) ** 2 + (N * (x1_rad - x3_rad) * math.cos((y1_rad + y3_rad) / 2.0)) ** 2.0) ** 0.5
+    # print(dist)
+    return dist
+
+
+def th3rd(c, d):
+    x1_rad = math.radians(c)
+    y1_rad = math.radians(d)
+    return 90 - math.degrees(math.atan2( (
+                math.cos(y1_rad) * math.tan(y3_rad) - math.sin(y1_rad) * math.cos(x3_rad - x1_rad)),math.sin(x3_rad - x1_rad)))  # コーンの方位算出
+
+
+dict[f'{ticks_ms()}'] = "start"
+pinX = Pin(26, Pin.IN)
+pinY = Pin(27, Pin.IN)
+md.set_motor(0, 0)
+sleep(1)
 while True:
-    print(imu.get_eulervalue())
     th1 = imu.get_eulervalue()[0]
-    print(th1)
-    
-    x1,y1 = gps.get_coordinate()
-    distance_1 = distance_first(x1,y1)
-    th2 = th2nd(x1,y1)
-    
-    if distance_1 > 2:
-     if th1 > th2:
-        if th1 - th2 < 30:
-            md.set_motor(1, 1)	
-        else:
-            if th1 - th2 <= 180:
-                md.set_motor(0.6, 1)
+
+    x1, y1 = gps.get_coordinate()
+    if x1 is None or x2 is None:
+        continue
+    distance_1 = distance_first(x1, y1)
+    th2 = th2nd(x1, y1)
+    th1 = th1
+    th2 = th2 if th2 > 0 else 360 + th2
+
+    print(f'{x1} {y1} {distance_1} {th1} {th2}')
+    print(th1 - th2)
+
+    continue
+    # dict[f'{ticks_ms()}'] = f"{th1} {th2}"
+    if distance_1 > 5:
+
+        if th1 > th2:
+            if th1 - th2 < 10:
+                md.set_motor(1, 1)
             else:
-                md.set_motor(1, 0.6)
-     else:
-         if th2 - th1 < 30:
-             md.set_motor(1, 1)
-         else:
-             if th2 - th1 <= 180:
-                 md.set_motor(1, 0.6)
-             else:
-                 md.set_motor(0.6, 1)
+                if th1 - th2 <= 180:
+                    md.set_motor(0.4, 1)
+                else:
+                    md.set_motor(1, 0.4)
+        else:
+            if th2 - th1 < 10:
+                md.set_motor(1, 1)
+            else:
+                if th2 - th1 <= 180:
+                    md.set_motor(1, 0.4)
+                else:
+                    md.set_motor(0.4, 1)
     else:
-        break    #この時点でdes1に到着
+        break  # この時点でdes1に到着
+
 
 while True:
     print(imu.get_eulervalue())
@@ -99,6 +137,8 @@ while True:
     print(th1)
     
     x1,y1 = gps.get_coordinate()
+    if x1 is None or x2 is None:
+        continue
     distance_2 = distance_second(x1,y1)
     th3 = th3rd(x1,y1)
     
@@ -122,30 +162,26 @@ while True:
     else:
         break    #この時点でdes2にのこり5m。ここからカメラ移行のプログラミングをつける
 
-pinX = machine.pin(26,Pin.IN)
-pinY = machine.pin(27,Pin.IN)
 
-def go_destination(i):
-    return i.value()
+
 
 while True:
-    X = go_destination(pinX)
-    Y = go_destination(pinY)
-    
-    if X==Y==0:
-        md.set_motor(1,1)
-    
-    
-    elif X=1 and Y=0:
-        md.set_motor(1,-1)
-    
-    elif X=0 and Y=1:
-        md.set_motor(-1,1)
-    
+    X = pinX.value()
+    Y = pinY.value()
+    dict[f'{ticks_ms()}'] = f"{X} {Y}"
+    if X == Y == 0:
+        md.set_motor(0.6, 0.7)
+    elif X == 1 and Y == 0:
+        md.set_motor(0.4, 0.2)
+    elif X == 0 and Y == 1:
+        md.set_motor(0.2, 0.4)
     else:
-        md.set_motor(0,0)
-
-
+        md.set_motor(0.3, 0)
+    sleep(0.5)
+    md.set_motor(0, 0)
+    sleep(0.5)
+    if IN1.value() == 0:
+        break
 
 """while True:
     

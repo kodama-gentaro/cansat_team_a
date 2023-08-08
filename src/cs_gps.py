@@ -34,16 +34,19 @@ def get_coordinate():
             # _________________________________________________
             if type(latitude) == str:
                 latitude = float(latitude)
+            if type(longitude) == str:
+                longitude = float(longitude)
+
 
             # _________________________________________________
-            print('Lat:', latitude)
-            print('Lng:', longitude)
-            print(type(latitude))
+            #print('Lat:', latitude)
+            #print('Lng:', longitude)
+            #print(type(latitude))
             break
 
         except Exception as E:
             pass
-    return latitude, longitude
+    return longitude, latitude
 
 ##########################################################
 def convert(parts):

@@ -95,8 +95,10 @@ md.set_motor(0, 0)
 sleep(1)
 while True:
     th1 = imu.get_eulervalue()[0]
-
-    x1, y1 = gps.get_coordinate()
+    #print(imu.get_magvalue()[0])
+    #x1, y1 = gps.get_coordinate()
+    x1 = 130.217028
+    y1 = 33.594944
     if x1 is None or x2 is None:
         continue
     distance_1 = distance_first(x1, y1)
@@ -105,28 +107,33 @@ while True:
     th2 = th2 if th2 > 0 else 360 + th2
 
     print(f'{x1} {y1} {distance_1} {th1} {th2}')
-    print(th1 - th2)
+    #sd.write(f'{x1} {y1} {distance_1} {th1} {th2}')
 
-    continue
     # dict[f'{ticks_ms()}'] = f"{th1} {th2}"
     if distance_1 > 5:
 
         if th1 > th2:
             if th1 - th2 < 10:
-                md.set_motor(1, 1)
+                #md.set_motor(1, 1)
+                print('s')
             else:
                 if th1 - th2 <= 180:
-                    md.set_motor(0.4, 1)
+                    #md.set_motor(0.4, 1)
+                    print('l')
                 else:
-                    md.set_motor(1, 0.4)
+                    #md.set_motor(1, 0.4)
+                    print('r')
         else:
             if th2 - th1 < 10:
-                md.set_motor(1, 1)
+                #md.set_motor(1, 1)
+                print('s')
             else:
                 if th2 - th1 <= 180:
-                    md.set_motor(1, 0.4)
+                    #md.set_motor(1, 0.4)
+                    print('r')
                 else:
-                    md.set_motor(0.4, 1)
+                    #md.set_motor(0.4, 1)
+                    print('l')
     else:
         break  # この時点でdes1に到着
 
@@ -141,10 +148,10 @@ while True:
         continue
     distance_2 = distance_second(x1,y1)
     th3 = th3rd(x1,y1)
-    
+    #sd.write(f'{x1} {y1} {distance_2} {th1} {th3}')
     if distance_2 >5:
      if th1 > th3:
-        if th1 - th3 < 30:
+        if th1 - th3 < 5:
             md.set_motor(1, 1)
         else:
             if th1 - th3 <= 180:
@@ -168,7 +175,7 @@ while True:
 while True:
     X = pinX.value()
     Y = pinY.value()
-    dict[f'{ticks_ms()}'] = f"{X} {Y}"
+    #sd.write(f'{X} {Y}')
     if X == Y == 0:
         md.set_motor(0.6, 0.7)
     elif X == 1 and Y == 0:

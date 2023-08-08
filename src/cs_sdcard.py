@@ -4,28 +4,29 @@ import os
 from sdcard import SDCard
 from time import sleep_ms
 
-CS_PIN = 17
+CS_PIN = 20
 SPI_ID = 0
 SPI_SCK = 18
 SPI_MOSI = 19
 SPI_MISO = 16
-SPI_BANDRATE = 32000000
+SPI_BANDRATE = 16000000
 
 
-def init(self):
+def init():
     i = 0
     while i < 5:
         try:
-            self.cs_pin = Pin(CS_PIN)
-            self.spi = SPI(SPI_ID, sck=Pin(SPI_SCK), mosi=Pin(SPI_MOSI), miso=Pin(SPI_MISO))
-            self.sd = SDCard(self.spi, self.cs_pin, SPI_BANDRATE)
-            os.mount(self.sd, '/sd')
+            cs_pin = Pin(CS_PIN)
+            spi = SPI(SPI_ID, sck=Pin(SPI_SCK), mosi=Pin(SPI_MOSI), miso=Pin(SPI_MISO))
+            sd = SDCard(spi, cs_pin, SPI_BANDRATE)
+            os.mount(sd, '/sd')
+            break
         except Exception as e:
             print("SDCARD_ERROR")
             print(e)
             sleep_ms(100)
             i += 1
-            break
+
     raise OSError
 
 

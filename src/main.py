@@ -91,54 +91,58 @@ def th3rd(c, d):
 dict[f'{ticks_ms()}'] = "start"
 pinX = Pin(26, Pin.IN)
 pinY = Pin(27, Pin.IN)
-sleep(30000)
-md.set_motor(0.5, 0.5)
-sleep(1)
+sleep(10)
 while True:
+    md.set_motor(0, 0)
+    sleep(2)
     th1 = imu.get_eulervalue()[0]
     #print(imu.get_magvalue()[0])
     x1, y1 = gps.get_coordinate()
+    X = pinX.value()
+    Y = pinY.value()
+    if not (X == Y == 1):
+        break
     
     if x1 is None or x2 is None:
         continue
     distance_1 = distance_first(x1, y1)
     th2 = th2nd(x1, y1)
-    th1 = th1
+    th1 = th1 if th1 > 0 else th1 - 360
     th2 = th2 if th2 > 0 else 360 + th2
-
+    
     print(f'{x1} {y1} {distance_1} {th1} {th2}')
     #sd.write(f'{x1} {y1} {distance_1} {th1} {th2}')
-
+    
     # dict[f'{ticks_ms()}'] = f"{th1} {th2}"
     if distance_1 > 5:
 
         if th1 > th2:
             if th1 - th2 < 10:
                 md.set_motor(1, 1)
-                print('s')
+                
             else:
                 if th1 - th2 <= 180:
-                    md.set_motor(0.4, 1)
-                    print('l')
+                    md.set_motor(0.2, 1)
+                   
                 else:
-                    md.set_motor(1, 0.4)
-                    print('r')
+                    md.set_motor(1, 0.2)
+                 
         else:
             if th2 - th1 < 10:
                 md.set_motor(1, 1)
-                print('s')
+             
             else:
                 if th2 - th1 <= 180:
-                    md.set_motor(1, 0.4)
-                    print('r')
+                    md.set_motor(1, 0.2)
+              
                 else:
-                    md.set_motor(0.4, 1)
-                    print('l')
+                    md.set_motor(0.2, 1)
+             
+        
     else:
         break  # この時点でdes1に到着
 
-md.set_motor(0.5, 0.5)
-sleep(1)
+"""
 while True:
     print(imu.get_eulervalue())
     th1 = imu.get_eulervalue()[0]
@@ -170,7 +174,7 @@ while True:
     else:
         break    #この時点でdes2にのこり5m。ここからカメラ移行のプログラミングをつける
 
-
+"""
 
 md.set_motor(0.5, 0.5)
 sleep(1)

@@ -105,7 +105,7 @@ while True:
 
     md.set_motor(0, 0)
     sleep(0.5)
-    q = get_quaternionvalue()
+    q = imu.get_quaternionvalue()
     x, y, z, w = q
     #print(imu.get_magvalue()[0])
     x1, y1 = gps.get_coordinate()
@@ -127,7 +127,7 @@ while True:
     #sd.write(f'{x1} {y1} {distance_1} {th1} {th2}')
     sv.write(f'{x1} {y1} {distance_1} {th1} {th2}')
     md.set_motor(0.5, 0.5)
-    sleep(0.4)
+    sleep(0.3)
     # dict[f'{ticks_ms()}'] = f"{th1} {th2}"
     if distance_1 > 5:
 
@@ -153,7 +153,7 @@ while True:
                 else:
                     md.set_motor(0.6, 1)
 
-        sleep(0.4)
+        sleep(0.2)
 
 
     else:
@@ -203,14 +203,14 @@ while True:
     if X == Y == 0:
         md.set_motor(0.6, 0.7)
     elif X == 1 and Y == 0:
-        md.set_motor(0.7, 0)
+        md.set_motor(0.7, 0.5)
     elif X == 0 and Y == 1:
-        md.set_motor(0, 0.7)
+        md.set_motor(0.5, 0.7)
     else:
-        md.set_motor(0.6, -0.6)
-    sleep(0.5)
+        md.set_motor(0.6, 0)
+    sleep(0.3)
     md.set_motor(0, 0)
-    sleep(0.5)
+    sleep(0.2)
     if IN1.value() == 0:
         break
 

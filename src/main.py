@@ -1,7 +1,7 @@
 from machine import Pin
 from utime import sleep, ticks_ms
 import cs_gps as gps
-import cs_sdcard as sd
+import cs_save as sv
 import cs_motor_driver as md
 import cs_nine_axis_sensor as imu
 import math
@@ -15,6 +15,9 @@ IN2.value(0)
 dict = {}
 md.init()
 md.set_motor(0, 0)
+sv.init()
+sv.write("Start")
+sleep(10000)
 while True:
     # print(IN1.value())
     print(IN1.value())
@@ -22,7 +25,7 @@ while True:
     if IN1.value() == 1:
         sleep(15)
         p6.value(1)
-        sleep(8)
+        sleep(0.2)
         p6.value(0)
         print("para_deprecated")
         break
@@ -33,6 +36,8 @@ while True:
 md.init()
 imu.init()
 gps.init()
+
+sv.write("para_deprecated")
 #sd.init()
 #sd.write('para_deprecated')
 sleep(1)
@@ -90,7 +95,7 @@ def th3rd(c, d):
                 math.cos(y1_rad) * math.tan(y3_rad) - math.sin(y1_rad) * math.cos(x3_rad - x1_rad)),math.sin(x3_rad - x1_rad)))  # コーンの方位算出
 
 
-dict[f'{ticks_ms()}'] = "start"
+
 pinX = Pin(26, Pin.IN)
 pinY = Pin(27, Pin.IN)
 md.set_motor(0,0)
@@ -99,7 +104,7 @@ while True:
 
 
     md.set_motor(0, 0)
-    sleep(1)
+
     th1 = imu.get_eulervalue()[0]
     #print(imu.get_magvalue()[0])
     x1, y1 = gps.get_coordinate()
@@ -118,8 +123,8 @@ while True:
 
     print(f'{x1} {y1} {distance_1} {th1} {th2}')
     #sd.write(f'{x1} {y1} {distance_1} {th1} {th2}')
-
-    md.set_motor(0.5,0.5)
+    sv.write(f'{x1} {y1} {distance_1} {th1} {th2}')
+    md.set_motor(0.5, 0.5)
     sleep(0.4)
     # dict[f'{ticks_ms()}'] = f"{th1} {th2}"
     if distance_1 > 5:
@@ -192,6 +197,7 @@ while True:
     X = pinX.value()
     Y = pinY.value()
     #sd.write(f'{X} {Y}')
+    sv.write(f'{X} {Y}')
     if X == Y == 0:
         md.set_motor(0.6, 0.7)
     elif X == 1 and Y == 0:

@@ -1,6 +1,6 @@
 from machine import Pin, SoftI2C
 import utime
-
+from math import atan2, degrees
 from bno055 import BNO055
 
 def init():
@@ -8,11 +8,12 @@ def init():
     i2c = SoftI2C(scl=Pin(4), sda=Pin(5), freq=10000)
     global sensor
     sensor = BNO055(i2c)
+    sensor.mode(0x09)
     global offset
     offset = (0, 0, 0, #加速度(x,y,z)のキャリブレーション
               0, 0, 0, #角速度(x,y,z)のキャリブレーション
               0, 0, 0, #地磁気(x,y,z)のキャリブレーション
-              -90, 0, 0) #オイラー角(x,y,z)のキャリブレーション
+              0, 0, 0) #オイラー角(x,y,z)のキャリブレーション
 
 def get_accvalue():
     a=5
@@ -122,23 +123,22 @@ def get_quaternionvalue():
         count += 1
         if a > 0:
             try:
-                quaternion_r = sensor.quaternion()[0]
-                quaternion_i = sensor.quaternion()[1]
-                quaternion_j = sensor.quaternion()[2]
-                quaternion_k = sensor.quaternion()[3]
+                quaternion_x = sensor.quaternion()[0]
+                quaternion_y = sensor.quaternion()[1]
+                quaternion_z = sensor.quaternion()[2]
+                quaternion_w = sensor.quaternion()[3]
 
 
-                if quaternion_r == 0.0 and quaternion_i == 0.0 and quaternion_j == 0.0 and quaternion_k == 0.0:
+                if quaternion_x == 0.0 and quaternion_y == 0.0 and quaternion_z == 0.0 and quaternion_w == 0.0:
                     raise OSError
 
                 # オイラー角
-                return quaternion_r, quaternion_i, quaternion_j, quaternion_k
+                return quaternion_x, quaternion_y, quaternion_z, quaternion_w
 
             except OSError as e:
                 print(e)
         else:
             break
     raise OSError
-
 
 

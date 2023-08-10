@@ -14,6 +14,9 @@ p6 = Pin(6, Pin.OUT)
 IN2.value(0)
 dict = {}
 md.init()
+sd.init()
+sd.write("Start")
+sleep(1000)
 md.set_motor(0, 0)
 while True:
     # print(IN1.value())
@@ -99,8 +102,9 @@ while True:
 
 
     md.set_motor(0, 0)
-    sleep(1)
-    th1 = imu.get_eulervalue()[0]
+    sleep(0.5)
+    q = get_quaternionvalue()
+    x, y, z, w = q
     #print(imu.get_magvalue()[0])
     x1, y1 = gps.get_coordinate()
     X = pinX.value()
@@ -113,14 +117,15 @@ while True:
     distance_1 = distance_first(x1, y1)
     th2 = th2nd(x1, y1)
     print(th1)
-    th1 = th1 if th1 <= 360 else th1 - 360
+    th1 = math.degrees(math.atan2(2*(w*x+y*z), 1 - 2*(x**2+y**2))) + 180 - 90
+    th1 = th1 if th1 > 0 else 360 + th1
     th2 = th2 if th2 > 0 else 360 + th2
 
     print(f'{x1} {y1} {distance_1} {th1} {th2}')
     #sd.write(f'{x1} {y1} {distance_1} {th1} {th2}')
 
     md.set_motor(0.5,0.5)
-    sleep(0.4)
+    sleep(0.1)
     # dict[f'{ticks_ms()}'] = f"{th1} {th2}"
     if distance_1 > 5:
 
@@ -130,10 +135,10 @@ while True:
 
             else:
                 if th1 - th2 <= 180:
-                    md.set_motor(0.4, 1)
+                    md.set_motor(0.6, 1)
 
                 else:
-                    md.set_motor(1, 0.4)
+                    md.set_motor(1, 0.6)
 
         else:
             if th2 - th1 < 10:
@@ -141,12 +146,12 @@ while True:
 
             else:
                 if th2 - th1 <= 180:
-                    md.set_motor(1, 0.4)
+                    md.set_motor(1, 0.6)
 
                 else:
-                    md.set_motor(0.4, 1)
+                    md.set_motor(0.6, 1)
 
-        sleep(0.4)
+        sleep(0.1)
 
 
     else:
@@ -195,11 +200,11 @@ while True:
     if X == Y == 0:
         md.set_motor(0.6, 0.7)
     elif X == 1 and Y == 0:
-        md.set_motor(0.7, 0.2)
+        md.set_motor(0.7, 0)
     elif X == 0 and Y == 1:
-        md.set_motor(0.2, 0.7)
+        md.set_motor(0, 0.7)
     else:
-        md.set_motor(0.4, 0.2)
+        md.set_motor(0.6, -0.6)
     sleep(0.5)
     md.set_motor(0, 0)
     sleep(0.5)

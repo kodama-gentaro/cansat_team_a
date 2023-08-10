@@ -5,7 +5,7 @@ import cs_save as sv
 import cs_motor_driver as md
 import cs_nine_axis_sensor as imu
 import math
-import ujson as json
+
 
 IN1 = Pin(11, Pin.IN, Pin.PULL_UP)
 IN2 = Pin(10, Pin.OUT)
@@ -17,32 +17,38 @@ md.init()
 md.set_motor(0, 0)
 sv.init()
 sv.write("Start")
-sleep(10000)
+imu.init()
+gps.init()
 while True:
     # print(IN1.value())
     print(IN1.value())
 
     if IN1.value() == 1:
-        sleep(15)
+        sleep(10)
         p6.value(1)
-        sleep(8)
+        sleep(1)
         p6.value(0)
         print("para_deprecated")
         break
     else:
         print("A")
+        q = imu.get_quaternionvalue()
+        x, y, z, w = q
+        # print(imu.get_magvalue()[0])
+        x1, y1 = gps.get_coordinate()
+        th1 = math.degrees(math.atan2(2 * (w * x + y * z), 1 - 2 * (x ** 2 + y ** 2))) + 180 - 90
+        th1 = th1 if th1 > 0 else 360 + th1
+        print(f'{x1} {y1} {th1}')
+
     sleep(0.5)
 
-md.init()
-imu.init()
-gps.init()
 
 sv.write("para_deprecated")
 #sd.init()
 #sd.write('para_deprecated')
-sleep(1)
+
 md.set_motor(0, 0)
-dict[f'{ticks_ms()}'] = "start"
+
 # x1=longtitude(経度）
 # y1=latitude（緯度）
 x2 = 130.21753  # 本番の南側のポイントの経度
@@ -118,7 +124,7 @@ while True:
         continue
     distance_1 = distance_first(x1, y1)
     th2 = th2nd(x1, y1)
-    print(th1)
+
     th1 = math.degrees(math.atan2(2*(w*x+y*z), 1 - 2*(x**2+y**2))) + 180 - 90
     th1 = th1 if th1 > 0 else 360 + th1
     th2 = th2 if th2 > 0 else 360 + th2

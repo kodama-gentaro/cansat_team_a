@@ -7,20 +7,22 @@ import cs_nine_axis_sensor as imu
 import math
 import ujson as json
 
-IN1 = Pin(17, Pin.IN, Pin.PULL_UP)
-IN2 = Pin(11, Pin.OUT)
+IN1 = Pin(11, Pin.IN, Pin.PULL_UP)
+IN2 = Pin(10, Pin.OUT)
 p6 = Pin(6, Pin.OUT)
 
-IN2.value(1)
+IN2.value(0)
 dict = {}
 md.init()
 md.set_motor(0, 0)
 while True:
     # print(IN1.value())
     print(IN1.value())
+
     if IN1.value() == 1:
+        sleep(15)
         p6.value(1)
-        sleep(0)
+        sleep(8)
         p6.value(0)
         print("para_deprecated")
         break
@@ -92,7 +94,7 @@ dict[f'{ticks_ms()}'] = "start"
 pinX = Pin(26, Pin.IN)
 pinY = Pin(27, Pin.IN)
 md.set_motor(0,0)
-sleep(10)
+
 while True:
 
 

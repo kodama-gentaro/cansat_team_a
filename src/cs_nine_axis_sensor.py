@@ -114,3 +114,31 @@ def get_eulervalue():
     raise OSError
 
 
+def get_quaternionvalue():
+    a = 50
+    count = 0
+    while True:
+        a -= 1
+        count += 1
+        if a > 0:
+            try:
+                quaternion_r = sensor.quaternion()[0]
+                quaternion_i = sensor.quaternion()[1]
+                quaternion_j = sensor.quaternion()[2]
+                quaternion_k = sensor.quaternion()[3]
+
+
+                if quaternion_r == 0.0 and quaternion_i == 0.0 and quaternion_j == 0.0 and quaternion_k == 0.0:
+                    raise OSError
+
+                # オイラー角
+                return quaternion_r, quaternion_i, quaternion_j, quaternion_k
+
+            except OSError as e:
+                print(e)
+        else:
+            break
+    raise OSError
+
+
+

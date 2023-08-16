@@ -14,7 +14,6 @@ p6 = Pin(6, Pin.OUT)
 IN2.value(0)
 dict = {}
 md.init()
-md.set_motor(0, 0)
 sv.init()
 sv.write("Start")
 imu.init()
@@ -26,7 +25,7 @@ while True:
     if IN1.value() == 1:
         sleep(10)
         p6.value(1)
-        sleep(1)
+        sleep(8)
         p6.value(0)
         print("para_deprecated")
         break
@@ -106,6 +105,9 @@ pinX = Pin(26, Pin.IN)
 pinY = Pin(27, Pin.IN)
 md.set_motor(0,0)
 
+heading_target = 0
+straight_time = 0
+target_time = 0.5
 while True:
 
 
@@ -120,13 +122,37 @@ while True:
     if not (X == Y == 1):
         break
 
-    if x1 is None or x2 is None:
+    th1 = math.degrees(math.atan2(2*(w*x+y*z), 1 - 2*(x**2+y**2))) + 180 - 90
+    th1 = th1 if th1 > 0 else 360 + th1
+
+    if x1 is None or y1 is None:
+        if not (X == Y == 1):
+            break
+        md.set_motor(1,1)
+        while target_time > straight_time:
+            sleep(0.5)
+            straight_time += 0.5
+        md.set_motor(0,0)
+        straight_time = 0
+        target_time += 0.5
+
+        md.set_motor(0.8,0)
+        while (th1 - (heading_target - 20) % 360) % 360 > 20:
+            q = imu.get_quaternionvalue()
+            x, y, z, w = q
+            th1 = math.degrees(math.atan2(2 * (w * x + y * z), 1 - 2 * (x ** 2 + y ** 2))) + 180 - 90
+            th1 = th1 if th1 > 0 else 360 + th1
+        md.set_motor(0,0)
+        heading_target = (heading_target + 90) % 360
+
+
         continue
+
+    target_time = 0.5
+    heading_target = 0
     distance_1 = distance_first(x1, y1)
     th2 = th2nd(x1, y1)
 
-    th1 = math.degrees(math.atan2(2*(w*x+y*z), 1 - 2*(x**2+y**2))) + 180 - 90
-    th1 = th1 if th1 > 0 else 360 + th1
     th2 = th2 if th2 > 0 else 360 + th2
 
     print(f'{x1} {y1} {distance_1} {th1} {th2}')

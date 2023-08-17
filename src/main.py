@@ -111,8 +111,7 @@ target_time = 0.5
 while True:
 
 
-    md.set_motor(0, 0)
-    sleep(0.5)
+
     q = imu.get_quaternionvalue()
     x, y, z, w = q
     #print(imu.get_magvalue()[0])
@@ -136,8 +135,8 @@ while True:
         straight_time = 0
         target_time += 0.5
 
-        md.set_motor(0.8,0)
-        while (th1 - (heading_target - 20) % 360) % 360 > 20:
+        md.set_motor(0.6,0)
+        while (th1 - (heading_target - 20) % 360) % 360 > 15:
             q = imu.get_quaternionvalue()
             x, y, z, w = q
             th1 = math.degrees(math.atan2(2 * (w * x + y * z), 1 - 2 * (x ** 2 + y ** 2))) + 180 - 90
@@ -158,8 +157,7 @@ while True:
     print(f'{x1} {y1} {distance_1} {th1} {th2}')
     #sd.write(f'{x1} {y1} {distance_1} {th1} {th2}')
     sv.write(f'{x1} {y1} {distance_1} {th1} {th2}')
-    md.set_motor(0.5, 0.5)
-    sleep(0.3)
+
     # dict[f'{ticks_ms()}'] = f"{th1} {th2}"
     if distance_1 > 5:
 
@@ -185,7 +183,7 @@ while True:
                 else:
                     md.set_motor(0.6, 1)
 
-        sleep(0.2)
+        sleep(0.1)
 
 
     else:

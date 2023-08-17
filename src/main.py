@@ -50,10 +50,10 @@ md.set_motor(0, 0)
 
 # x1=longtitude(経度）
 # y1=latitude（緯度）
-x2 = 130.21753  # 本番の南側のポイントの経度
-y2 = 33.59507  # 南緯度                     ここは本番で入力
-x3 = 130.21753 # カラーコーンの経度
-y3 = 33.59507  # 緯度
+x2 = 139.98764333  # 本番の南側のポイントの経度
+y2 = 40.14265333  # 南緯度                     ここは本番で入力
+x3 = 139.98764333 # カラーコーンの経度
+y3 = 40.14265333  # 緯度
 # x1_rad=math.radians(x1)
 # y1_rad=math.radians(y1)
 x2_rad = math.radians(x2)
@@ -133,10 +133,10 @@ while True:
             straight_time += 0.5
         md.set_motor(0,0)
         straight_time = 0
-        target_time += 0.5
+        target_time += 1
 
-        md.set_motor(0.6,0)
-        while (th1 - (heading_target - 20) % 360) % 360 > 15:
+        md.set_motor(0.7,0.5)
+        while (th1 - (heading_target - 10) % 360) % 360 > 20:
             q = imu.get_quaternionvalue()
             x, y, z, w = q
             th1 = math.degrees(math.atan2(2 * (w * x + y * z), 1 - 2 * (x ** 2 + y ** 2))) + 180 - 90
@@ -223,7 +223,7 @@ while True:
 
 """
 
-md.set_motor(0.5, 0.5)
+md.set_motor(0, 0)
 sleep(1)
 while True:
     X = pinX.value()
@@ -238,9 +238,6 @@ while True:
         md.set_motor(0.5, 0.7)
     else:
         md.set_motor(0.6, 0)
-    sleep(0.3)
-    md.set_motor(0, 0)
-    sleep(0.2)
     if IN1.value() == 0:
         break
 

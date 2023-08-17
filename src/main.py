@@ -1,11 +1,11 @@
 from machine import Pin
 from utime import sleep, ticks_ms
 import cs_gps as gps
-import cs_sdcard as sd
+import cs_save as sv
 import cs_motor_driver as md
 import cs_nine_axis_sensor as imu
 import math
-import ujson as json
+
 
 IN1 = Pin(11, Pin.IN, Pin.PULL_UP)
 IN2 = Pin(10, Pin.OUT)
@@ -14,16 +14,16 @@ p6 = Pin(6, Pin.OUT)
 IN2.value(0)
 dict = {}
 md.init()
-sd.init()
-sd.write("Start")
-sleep(1000)
-md.set_motor(0, 0)
+sv.init()
+sv.write("Start")
+imu.init()
+gps.init()
 while True:
     # print(IN1.value())
     print(IN1.value())
 
     if IN1.value() == 1:
-        sleep(15)
+        sleep(10)
         p6.value(1)
         sleep(8)
         p6.value(0)
@@ -31,16 +31,23 @@ while True:
         break
     else:
         print("A")
+        q = imu.get_quaternionvalue()
+        x, y, z, w = q
+        # print(imu.get_magvalue()[0])
+        x1, y1 = gps.get_coordinate()
+        th1 = math.degrees(math.atan2(2 * (w * x + y * z), 1 - 2 * (x ** 2 + y ** 2))) + 180 - 90
+        th1 = th1 if th1 > 0 else 360 + th1
+        print(f'{x1} {y1} {th1}')
+
     sleep(0.5)
 
-md.init()
-imu.init()
-gps.init()
+
+sv.write("para_deprecated")
 #sd.init()
 #sd.write('para_deprecated')
-sleep(1)
+
 md.set_motor(0, 0)
-dict[f'{ticks_ms()}'] = "start"
+
 # x1=longtitude(経度）
 # y1=latitude（緯度）
 x2 = 130.21753  # 本番の南側のポイントの経度
@@ -93,17 +100,19 @@ def th3rd(c, d):
                 math.cos(y1_rad) * math.tan(y3_rad) - math.sin(y1_rad) * math.cos(x3_rad - x1_rad)),math.sin(x3_rad - x1_rad)))  # コーンの方位算出
 
 
-dict[f'{ticks_ms()}'] = "start"
+
 pinX = Pin(26, Pin.IN)
 pinY = Pin(27, Pin.IN)
 md.set_motor(0,0)
 
+heading_target = 0
+straight_time = 0
+target_time = 0.5
 while True:
 
 
-    md.set_motor(0, 0)
-    sleep(0.5)
-    q = get_quaternionvalue()
+
+    q = imu.get_quaternionvalue()
     x, y, z, w = q
     #print(imu.get_magvalue()[0])
     x1, y1 = gps.get_coordinate()
@@ -112,20 +121,43 @@ while True:
     if not (X == Y == 1):
         break
 
-    if x1 is None or x2 is None:
-        continue
-    distance_1 = distance_first(x1, y1)
-    th2 = th2nd(x1, y1)
-    print(th1)
     th1 = math.degrees(math.atan2(2*(w*x+y*z), 1 - 2*(x**2+y**2))) + 180 - 90
     th1 = th1 if th1 > 0 else 360 + th1
+
+    if x1 is None or y1 is None:
+        if not (X == Y == 1):
+            break
+        md.set_motor(1,1)
+        while target_time > straight_time:
+            sleep(0.5)
+            straight_time += 0.5
+        md.set_motor(0,0)
+        straight_time = 0
+        target_time += 0.5
+
+        md.set_motor(0.6,0)
+        while (th1 - (heading_target - 20) % 360) % 360 > 15:
+            q = imu.get_quaternionvalue()
+            x, y, z, w = q
+            th1 = math.degrees(math.atan2(2 * (w * x + y * z), 1 - 2 * (x ** 2 + y ** 2))) + 180 - 90
+            th1 = th1 if th1 > 0 else 360 + th1
+        md.set_motor(0,0)
+        heading_target = (heading_target + 90) % 360
+
+
+        continue
+
+    target_time = 0.5
+    heading_target = 0
+    distance_1 = distance_first(x1, y1)
+    th2 = th2nd(x1, y1)
+
     th2 = th2 if th2 > 0 else 360 + th2
 
     print(f'{x1} {y1} {distance_1} {th1} {th2}')
     #sd.write(f'{x1} {y1} {distance_1} {th1} {th2}')
+    sv.write(f'{x1} {y1} {distance_1} {th1} {th2}')
 
-    md.set_motor(0.5,0.5)
-    sleep(0.1)
     # dict[f'{ticks_ms()}'] = f"{th1} {th2}"
     if distance_1 > 5:
 
@@ -197,17 +229,18 @@ while True:
     X = pinX.value()
     Y = pinY.value()
     #sd.write(f'{X} {Y}')
+    sv.write(f'{X} {Y}')
     if X == Y == 0:
         md.set_motor(0.6, 0.7)
     elif X == 1 and Y == 0:
-        md.set_motor(0.7, 0)
+        md.set_motor(0.7, 0.5)
     elif X == 0 and Y == 1:
-        md.set_motor(0, 0.7)
+        md.set_motor(0.5, 0.7)
     else:
-        md.set_motor(0.6, -0.6)
-    sleep(0.5)
+        md.set_motor(0.6, 0)
+    sleep(0.3)
     md.set_motor(0, 0)
-    sleep(0.5)
+    sleep(0.2)
     if IN1.value() == 0:
         break
 

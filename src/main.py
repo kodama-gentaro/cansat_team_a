@@ -10,7 +10,8 @@ import math
 IN1 = Pin(11, Pin.IN, Pin.PULL_UP)
 IN2 = Pin(10, Pin.OUT)
 p6 = Pin(6, Pin.OUT)
-
+pinX = Pin(26, Pin.IN)
+pinY = Pin(27, Pin.IN)
 IN2.value(0)
 dict = {}
 md.init()
@@ -23,9 +24,9 @@ while True:
     print(IN1.value())
 
     if IN1.value() == 1:
-        sleep(10)
-        p6.value(1)
-        sleep(8)
+        sleep(7)
+        p6.value(0)
+        sleep(3)
         p6.value(0)
         print("para_deprecated")
         break
@@ -35,9 +36,11 @@ while True:
         x, y, z, w = q
         # print(imu.get_magvalue()[0])
         x1, y1 = gps.get_coordinate()
-        th1 = math.degrees(math.atan2(2 * (w * x + y * z), 1 - 2 * (x ** 2 + y ** 2))) + 180 - 90
+        th1 = math.degrees(math.atan2(2 * (w * x + y * z), 1 - 2 * (x ** 2 + y ** 2))) - 90
         th1 = th1 if th1 > 0 else 360 + th1
-        print(f'{x1} {y1} {th1}')
+        X = pinX.value()
+        Y = pinY.value()
+        print(f'{x1} {y1} {th1} {X} {Y}')
 
     sleep(0.5)
 
@@ -101,8 +104,7 @@ def th3rd(c, d):
 
 
 
-pinX = Pin(26, Pin.IN)
-pinY = Pin(27, Pin.IN)
+
 md.set_motor(0,0)
 
 heading_target = 0
@@ -162,7 +164,7 @@ while True:
     if distance_1 > 5:
 
         if th1 > th2:
-            if th1 - th2 < 10:
+            if th1 - th2 < 20:
                 md.set_motor(1, 1)
 
             else:

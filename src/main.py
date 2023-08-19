@@ -53,10 +53,10 @@ md.set_motor(0, 0)
 
 # x1=longtitude(経度）
 # y1=latitude（緯度）
-x2 = 139.98764333  # 本番の南側のポイントの経度
-y2 = 40.14265333  # 南緯度                     ここは本番で入力
-x3 = 139.98764333 # カラーコーンの経度
-y3 = 40.14265333  # 緯度
+x2 = 139.9884  # 本番の南側のポイントの経度
+y2 = 40.14316  # 南緯度                     ここは本番で入力
+x3 = 139.9884 # カラーコーンの経度
+y3 = 40.14316  # 緯度
 # x1_rad=math.radians(x1)
 # y1_rad=math.radians(y1)
 x2_rad = math.radians(x2)
@@ -224,6 +224,26 @@ while True:
         break    #この時点でdes2にのこり5m。ここからカメラ移行のプログラミングをつける
 
 """
+while True:
+    if not (X == Y == 1):
+            break
+    md.set_motor(1,1)
+    while target_time > straight_time:
+        sleep(0.5)
+        straight_time += 0.5
+    md.set_motor(0,0)
+    straight_time = 0
+    target_time += 1
+
+    md.set_motor(0.7,0.5)
+    while (th1 - (heading_target - 10) % 360) % 360 > 20:
+        q = imu.get_quaternionvalue()
+        x, y, z, w = q
+        th1 = math.degrees(math.atan2(2 * (w * x + y * z), 1 - 2 * (x ** 2 + y ** 2))) + 180 - 90
+        th1 = th1 if th1 > 0 else 360 + th1
+    md.set_motor(0,0)
+    heading_target = (heading_target + 90) % 360
+
 
 md.set_motor(0, 0)
 sleep(1)

@@ -25,7 +25,7 @@ while True:
 
     if IN1.value() == 1:
         sleep(7)
-        p6.value(0)
+        p6.value(1)
         sleep(3)
         p6.value(0)
         print("para_deprecated")
